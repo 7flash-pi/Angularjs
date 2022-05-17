@@ -1,17 +1,43 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="myApp">
   <head>
     <title>TheNetNinja Angular Playlist</title>
     <link href="content/css/styles.css" rel="stylesheet" type="text/css" />
     <script src="app/lib/angular.min.js "></script>
+    <script src="app\app.js"></script>
   </head>
-  <body ng-init="color='orange'">
-    <!--Data Binding -->
-      <input type="text" ng-model="num" placeholder="enter your number">
-      <p>your number:{{num}}</p>
-    <!--Expression-->
-      <p>{{7*8+45}}</p>
-      <p class="{{color}}"> Make me orange</p>
+  <body>
+
+    <!--ng-include using tag-->
+
+    <header ng-include="'header.html'">
+
+    </header>
+    <div class="content">
+
+    <!--controller-->
+      <div ng-controller="mycontroller">
+
+        <button ng-click="order = 'name'">Order by name</button>
+        <button ng-click="order = 'belt'">Order by belt</button>
+
+          <!--Search box using filter-->
+        <input type="text" ng-model="search" placeholder="Hire a ninja" />
+        <ul>
+            <!--ng-repeat dirctive-->
+          <li ng-repeat="item in ninja | orderBy:order | filter: search" ng-show="item.available">
+            <h3>{{item.name}} - {{item.rate | currency:'£'}}</h3>
+            <div class="remove" ng-click="removeNinja(item)">x</div>
+          <span class="belt" style="background: {{item.belt}}">{{item.belt}} belt</span></li>
+        </ul>
+        <form ng-submit="addNinja()">
+          <input type="text" placeholder="name"ng-model="newNinja.name">
+          <input type="text" placeholder="belt" ng-model="newNinja.belt">
+          <input type="text" placeholder="rate" ng-model="newNinja.rate">
+          <input type="submit" value="Add Ninja">
+        </form>
+
+      </div>
+    </div>
   </body>
 </html>
-    
