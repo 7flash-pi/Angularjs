@@ -1,4 +1,20 @@
-const myApp=angular.module('myApp',[]);
+const myApp=angular.module('myApp',[ngRoute]);
+
+myApp.config(['$routeProvider',function($routeProvider){
+
+    $routeProvider
+    .when('/home',{
+        templateUrl: 'views/home.html',
+    })
+    .when('/directory',{
+        templateUrl: 'views/directory.html',
+        controller: 'mycontroller'
+    }).otherwise({
+        redirectTo:'/home'
+    })
+
+}])
+
 
 //controller
 myApp.controller("mycontroller",['$scope',function($scope){
