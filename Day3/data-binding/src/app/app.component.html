@@ -1,0 +1,7 @@
+
+  <div>
+      <input type="text" placeholder="Enter a Value"
+      [(ngModel)]="inputVal">
+      <p>{{inputVal}}</p>
+      <button type="submit"  (click)="clickHandle()" [disabled]=" inputVal=== '' "> click me</button>
+  </div>
