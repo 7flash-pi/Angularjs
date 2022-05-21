@@ -1,0 +1,17 @@
+button {
+    margin: 10px;
+    padding:5px;
+    color: #000;
+}
+.success
+{
+    border: 2px solid rgb(3, 63, 3);
+    background-color: rgba(152, 245, 13, 0.76);
+
+}
+.danger
+{
+    border: 2px solid rgb(87, 2, 2);
+    background-color: rgb(247, 158, 158);
+
+}

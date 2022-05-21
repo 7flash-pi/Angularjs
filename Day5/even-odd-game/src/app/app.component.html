@@ -1,8 +1,21 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <button class="btn btn-success">start</button>
-      <button class="btn btn-danger">stop</button>
+      <app-game-control (intervalFired)="onIntervalFired($event)"> </app-game-control>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+     <app-odd *ngFor="let oddNumber of oddNumbers" [number]="oddNumber"></app-odd>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <app-even *ngFor="let evenNumber of evenNumbers" [number]="evenNumber"></app-even>
     </div>
   </div>
 </div>
