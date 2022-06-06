@@ -18,7 +18,8 @@ const appRoutes:Routes=[
   { path:'', component:HomeComponent },
   { path:'users', component:UsersComponent },
   { path:'servers', component:ServersComponent},
-  { path:'users/:id/:name', component:UserComponent}
+  { path:'users/:id/:name', component:UserComponent},
+   { path:'servers/:id/edit', component:EditServerComponent},
 ];
 
 @NgModule({
