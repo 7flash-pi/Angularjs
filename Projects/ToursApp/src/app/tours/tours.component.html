@@ -1,0 +1,31 @@
+<section>
+    <div class="title">
+        <h2>Our Tours</h2>
+        <div class="underline"></div>
+    </div>
+
+    <div  *ngIf=" toursData.length!=0 ">
+        <article class="single-tour" *ngFor=" let tour of  toursData;">
+            <img src="{{tour.image}}">
+            <footer>
+                <div class="tour-info">
+                    <h4>{{tour.name}}</h4>
+                </div>
+                <p *ngIf="readMore">{{tour.info}}</p>
+                <p>{{tour.info.substring(0,100)}}...</p>
+                <button (click)="setreadMore()">
+                    {{readMore ? 'Show Less':'Read More'}}
+                </button>
+                <button class="delete-btn" (click)="deleteTours(tour.id)">not interested</button>
+
+            </footer>
+        </article>
+    </div>
+</section>
+
+<main *ngIf="toursData.length ===0">
+    <div class="title">
+        <h2>No tours left</h2>
+        <button class="btn" (click)="getTourData()">Refresh</button>
+    </div>
+</main>
