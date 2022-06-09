@@ -1,0 +1,9 @@
+
+<article class="question" *ngFor="let singleQuestion of question; let i=index">
+    <header>
+        <h4>{{singleQuestion.title}}</h4>
+        <button class="btn" (click)="setShowInfo(i)">
+            {{showInfo ?'Show' : 'Hide'}}</button>
+    </header>
+    <p *ngIf="showInfo">{{singleQuestion.info}}</p>
+</article>
