@@ -19,7 +19,7 @@ export class SingleQuestionComponent implements OnInit {
     this.question=this.questionServie.question;
   }
 
-  setShowInfo(id:number){
+  setShowInfo(){
     this.showInfo= !this.showInfo;
   }
 
