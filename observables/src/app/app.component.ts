@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Restaurent } from './restaurent';
 import { AppserviceService } from './services/appservice.service';
 
 @Component({
@@ -8,17 +9,19 @@ import { AppserviceService } from './services/appservice.service';
 })
 export class AppComponent implements OnInit{
   title = 'observables';
+  restaurent:Restaurent[]=[];
 
   constructor(private appSer:AppserviceService){}
 
   ngOnInit(): void {
-    this.appSer.myObservable.subscribe((val) =>{
+    this.appSer.myObservable.subscribe((val: any) =>{
       console.log(val);
     })
     
-    this.appSer.fetchRestaurent.subscribe((val) =>{
-      console.log(val);
+    this.appSer.fetchRestaurent().subscribe((rest) =>{
+      this.restaurent=rest;
     })
+
   }
   
 }

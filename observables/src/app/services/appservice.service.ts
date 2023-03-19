@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { from, Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import {  Observable } from 'rxjs';
+import { map, catchError ,tap } from 'rxjs/operators';
 import { Restaurent } from '../restaurent';
 
 
@@ -12,7 +12,8 @@ export class AppserviceService {
 
   url="http://localhost:3000/restaurent";
 
-  constructor(private httpClient:HttpClient) { }
+  // simple observable
+  constructor(private http:HttpClient) { }
   myObservable= new Observable((observer) => {
     console.log('observable starts');
     observer.next("1");
@@ -25,14 +26,13 @@ export class AppserviceService {
     
   })
 
-  fetchRestaurent=new Observable( (observer) =>{
-    let headers: HttpHeaders = new HttpHeaders();
-    headers = headers.append('Accept', 'application/json');
-    return this.httpClient.get(this.url).pipe(
-      map((data) => {
-        return data;
-      })
-   )
-  })
+  // observable with get Request
+  fetchRestaurent(): Observable<Restaurent[]> {
+    return this.http.get<Restaurent[]>(this.url).pipe(
+        tap(data => console.log('All: ' + JSON.stringify(data))),
+    );
+  }
+
+  
   
 }
