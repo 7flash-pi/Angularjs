@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { AppserviceService } from './services/appservice.service';
 
 @Component({
   selector: 'app-root',
@@ -9,20 +9,16 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit{
   title = 'observables';
 
-  myObservable= new Observable((observer) => {
-    console.log('observable starts');
-    observer.next("1");
-    observer.next("2");
-    observer.next("3");
-    observer.next("4");
-    observer.next("5");
-  })
+  constructor(private appSer:AppserviceService){}
 
   ngOnInit(): void {
-    this.myObservable.subscribe((val) =>{
+    this.appSer.myObservable.subscribe((val) =>{
       console.log(val);
     })
     
+    this.appSer.fetchRestaurent.subscribe((val) =>{
+      console.log(val);
+    })
   }
   
 }
