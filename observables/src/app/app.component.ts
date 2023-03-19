@@ -10,6 +10,20 @@ import { AppserviceService } from './services/appservice.service';
 export class AppComponent implements OnInit{
   title = 'observables';
   restaurent:Restaurent[]=[];
+  inpRest:Restaurent={
+    id:8,
+    name:"roll Center",
+    address:"phulwari" ,
+    email:"rollCenter@gmail.com"
+    };
+
+   updateId;
+
+   updateData={
+    name:'Roll Center new',
+    address:"sushil plaza",
+    email:"newrollCenter@gmail.com"
+   }
 
   constructor(private appSer:AppserviceService){}
 
@@ -23,5 +37,17 @@ export class AppComponent implements OnInit{
     })
 
   }
+
+  addRest(data){
+    this.appSer.addRestaurent(data).subscribe();
+  }
+
+  updateRest(){
+    this.appSer.updateRestaurent(this.updateId,this.updateData).subscribe();
+  }
   
+  deleteRest(){
+    this.appSer.deleteRestaurent(this.updateId).subscribe();
+    
+  }
 }

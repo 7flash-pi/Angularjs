@@ -33,6 +33,21 @@ export class AppserviceService {
     );
   }
 
+  //observable with post Request
+  addRestaurent(data:Restaurent):Observable<any>{
+    return  this.http.post<Restaurent>(this.url,data);
+  }
+
+  //observable with put request
+ updateRestaurent(id:number,data:any):Observable<any>{
+    return this.http.put(`${this.url}/${id}`,data);
+  }
+
+  //observable with delete
+  deleteRestaurent(id:number):Observable<any>{
+    return this.http.delete(`${this.url}/${id}`);
+  }
+
   
   
 }
